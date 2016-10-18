@@ -22,7 +22,7 @@ function humanize_ten(num){
  * @return String equivalent to places
  */
 function human_array(){
-  var human_str = [[10000000,"Crore"],[100000,"Lakh"],[1000,"Thousand"],[100,"Hundred"],[10,"Ten"]];
+  var human_str = [[10000000,"Crore"],[100000,"Lakh"],[1000,"Thousand"],[100,"Hundred"],[10,"Ten"],[1,"One"]];
   return human_str;
 }
 /**
@@ -55,7 +55,7 @@ String.prototype.humanize = function() {
 		}
 		if(key[0]==1)										// condition for unit place 
 		{
-			result+=number_string()[parseInt(reminder)-1];
+			result += +" "+number_string()[parseInt(reminder)-1];
 		}
 		if(reminder>1)										// update pay value 
 		{

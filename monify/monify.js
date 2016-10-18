@@ -34,6 +34,20 @@ function number_string(){
 	return numbers;
 }
 /**
+ * Provide number string corresponding to number.
+ * @param  {Number} num [Number whose number string is to found] 
+ * @return String equivalent to number [54=>Fifty Five]
+ */
+function string_of_number(num){
+	if (num<100 && num>10) {
+		num = (humanize_ten( parseInt(num/10)-1)+" "+number_string()[(num%10)-1]);
+	}
+	else if (num<10 && num>0) {
+		num = number_string()[(num%10)-1]; 
+	}
+	return num;
+}
+/**
  * Function to return string equivalent to string number
  * @param  {String} this [string whose human string is to calculate.] 
  * @return String equivalent to number string
@@ -44,18 +58,19 @@ String.prototype.humanize = function() {
 	if(pay.includes(",")){pay = pay.replace(/[,]/g,'')}	//If this contain ',' replace it
 	for( let key of human_array() ){
 		let reminder = pay/key[0];
+		let round_number = parseInt(reminder);
 		if ((reminder)<key[0] &&  reminder>1  ) {
 		  if(key[0]==10){									// condition for 10'th place 
-		    result += "and " + humanize_ten(parseInt(reminder)-1);
+		    result += "and " + humanize_ten(round_number-1);
 		  }
 		  else{
-			  result += parseInt(reminder)+" ";
-			  result += key[1]+plurarize(parseInt(reminder))+", ";
+			  result += string_of_number(round_number)+" ";
+			  result += key[1]+plurarize(round_number)+", ";
 		  }
 		}
 		if(key[0]==1)										// condition for unit place 
 		{
-			result += +" "+number_string()[parseInt(reminder)-1];
+			result += " "+number_string()[round_number-1];
 		}
 		if(reminder>1)										// update pay value 
 		{
@@ -68,6 +83,6 @@ String.prototype.humanize = function() {
   result = result.trim()                                // Remove blank spaces 
   return result.endsWith(',')?result.replace(/\,$/,''):result   // Remove last ',' if present
 }
-//var money = "2000000";
-//var value = money.humanize();
-//console.log(value);
+var money = "54301";
+var value = money.humanize();
+console.log(value);

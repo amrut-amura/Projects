@@ -1,5 +1,5 @@
 ###Monify.js
-'54,320'=>"54 Thousands, 3 Hundreds, and Twenty"
+'54301'=>"Fifty Four Thousands, Three Hundreds, One"
 
 Use like this
 

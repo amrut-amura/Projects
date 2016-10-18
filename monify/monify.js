@@ -83,6 +83,6 @@ String.prototype.humanize = function() {
   result = result.trim()                                // Remove blank spaces 
   return result.endsWith(',')?result.replace(/\,$/,''):result   // Remove last ',' if present
 }
-var money = "54301";
-var value = money.humanize();
-console.log(value);
+//var money = "54301";
+//var value = money.humanize();
+//console.log(value);
